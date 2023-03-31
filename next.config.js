@@ -53,6 +53,17 @@ const securityHeaders = [
 ]
 
 module.exports = withBundleAnalyzer({
+  images: {
+    // remotePatterns: [
+    //   {
+    //     protocol: 'https',
+    //     hostname: 'raw.githubusercontent.com',
+    //     // port: '',
+    //     // pathname: '/account123/**',
+    //   },
+    // ],
+    domains: ['raw.githubusercontent.com'],
+  },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   eslint: {

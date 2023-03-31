@@ -50,12 +50,24 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, date, title, summary, tags, img_url } = frontMatter
             return (
               <li key={slug} className="py-4">
-                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-start xl:gap-4 xl:space-y-0">
                   <dl>
-                    <dt className="sr-only">Published on</dt>
+                    <dt className="mb-4">
+                      <Link
+                        href={`/blog/${slug}`}
+                        className="block overflow-hidden rounded-xl  shadow-lg"
+                      >
+                        <img
+                          src={img_url}
+                          alt="avatar"
+                          className=" h-40 w-full object-cover duration-300 hover:scale-110 sm:h-60 xl:h-40"
+                        />
+                      </Link>
+                    </dt>
+                    <dd className="sr-only">Published on</dd>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={date}>{formatDate(date)}</time>
                     </dd>
@@ -67,7 +79,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
+                      <div className="mt-3 flex flex-wrap">
                         {tags.map((tag) => (
                           <Tag key={tag} text={tag} />
                         ))}

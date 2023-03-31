@@ -1,11 +1,11 @@
 const projectsData = [
   {
-    title: 'A Search Engine',
+    title: 'Crypto Tracker',
     description: `What if you could look up any information in the world? Webpages, images, videos
     and more. Google has many features to help you find exactly what you're looking
     for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    imgSrc: '/static/images/crypto.png',
+    href: 'https://github.com/xiekecheng/crypto-app',
   },
   {
     title: 'The Time Machine',
