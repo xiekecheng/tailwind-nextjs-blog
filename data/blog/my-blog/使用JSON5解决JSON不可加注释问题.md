@@ -15,8 +15,6 @@ authors: ['default']
 
 在 JSON 定义中，对 KEY 都需要加双引号“”，并且不可以添加注释，那么当我们想要给 JSON 字符串添加注释，并且 key 不用加上双引号，这样比较符合我们的书写习惯，那么该如何解决呢？这时可以使用到 JSON5
 
-<!-- more -->
-
 # 安装
 
 使用 npm 安装 json5
@@ -94,9 +92,8 @@ const fs = require('fs')
 const path = require('path')
 const JSON5 = require('json5')
 // 读取json5文件,utf-8编码格式
-const json = fs.readFileSync(path.resolve(__dirname,'./test.json5'))
+const json = fs.readFileSync(path.resolve(__dirname, './test.json5'))
 
 // 使用json5解析成Object
-cosnt obj = JSON5.parse(json)
-
+const obj = JSON5.parse(json)
 ```
