@@ -4,7 +4,7 @@ export default function BlogBox({ post }) {
   // const { slug, date, title, summary, tags, img_url } = post
   return (
     <div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
           <article key={post.id} className="relative isolate flex flex-col gap-8 lg:flex-row">
             <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">

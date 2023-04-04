@@ -1,9 +1,6 @@
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
-import formatDate from '@/lib/utils/formatDate'
+import BlogBox from '@/components/BlogBox'
 
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }) {
   const [searchValue, setSearchValue] = useState('')
@@ -28,7 +25,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
               aria-label="Search articles"
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search articles"
+              placeholder="搜索文章"
               className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
             />
             <svg
@@ -53,43 +50,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
             const { slug, date, title, summary, tags, img_url } = frontMatter
             return (
               <li key={slug} className="py-4">
-                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-start xl:gap-4 xl:space-y-0">
-                  <dl>
-                    <dt className="mb-4">
-                      <Link
-                        href={`/blog/${slug}`}
-                        className="block overflow-hidden rounded-xl  shadow-lg"
-                      >
-                        <img
-                          src={img_url}
-                          alt="avatar"
-                          className=" h-40 w-full object-cover duration-300 hover:scale-110 sm:h-60 xl:h-40"
-                        />
-                      </Link>
-                    </dt>
-                    <dd className="sr-only">Published on</dd>
-                    <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date)}</time>
-                    </dd>
-                  </dl>
-                  <div className="space-y-3 xl:col-span-3">
-                    <div>
-                      <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
-                          {title}
-                        </Link>
-                      </h3>
-                      <div className="mt-3 flex flex-wrap">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
-                    </div>
-                  </div>
-                </article>
+                <BlogBox post={frontMatter} />
               </li>
             )
           })}
